@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\IconController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\NavlinkController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,20 +18,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
-Route::get('/services', function () {
-    return view('pages.services');
-});
-Route::get('/blog', function () {
-    return view('pages.blog');
-});
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
+/*Main Controller*/
+Route::get('/', [MainController::class, 'index']);
+Route::get('/services', [MainController::class, 'services']);
+Route::get('/blog', [MainController::class, 'blog']);
+Route::get('/contact', [MainController::class, 'contact']);
+
 Auth::routes();
 
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+/*icon controller*/
+Route::get('/edit_icon', [IconController::class, 'index']);
+Route::post('/add_icon', [IconController::class, 'store']);
+Route::get('/delete_icon', [IconController::class, 'destroy']);
+
+/*navlink controller*/
+Route::get('edit_navlinks', [NavlinkController::class, 'index']);
+Route::post('/add_link', [NavlinkController::class, 'store']);
+Route::get('/edit_navlink', [NavlinkController::class, 'edit']);
+Route::post('/update_link', [NavlinkController::class, 'update']);
+
+/*carousel controller*/
+Route::get('/carousel', [CarouselController::class, 'index']);
+Route::post('/add_carousel', [CarouselController::class, 'store']);
+Route::get('/delete_carousel/{id}', [CarouselController::class, 'destroy']);

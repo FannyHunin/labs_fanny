@@ -1,15 +1,15 @@
 <header class="header-section">
     <div class="logo">
-        <img src="img/logo.png" alt=""><!-- Logo -->
+        <img src="{{asset('images/smallIcon.png')}}" alt="">
     </div>
     <!-- Navigation -->
     <div class="responsive"><i class="fa fa-bars"></i></div>
     <nav>
         <ul class="menu-list">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/services">Services</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li class="active"><a href="/">{{$linkData->link1}}</a></li>
+            <li><a href="/services">{{$linkData->link2}}</a></li>
+            <li><a href="/blog">{{$linkData->link3}}</a></li>
+            <li><a href="/contact">{{$linkData->link4}}</a></li>
         </ul>
     </nav>
 </header>

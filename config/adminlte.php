@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Labs</b>BACKOFFICE',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -235,11 +235,68 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'    => 'HOME',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Labs icon',
+                    'url'  => '/edit_icon',
+                ],
+                [
+                    'text' => 'Navbar links',
+                    'url'  => '/edit_navlinks',
+                ],
+                [
+                    'text' => 'Carousel images',
+                    'url'  => '/carousel',
+                ],
+                [
+                    'text' => 'Moto',
+                    'url'  => '/edit_moto',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'SERVICES',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Labs icon',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Navbar links',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'BLOG',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Labs icon',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Navbar links',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'CONTACT',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Labs icon',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Navbar links',
+                    'url'  => '#',
+                ],
+            ],
         ],
         ['header' => 'account_settings'],
         [
@@ -289,22 +346,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 
