@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NavlinkSeeder::class,
             MotoSeeder::class,
+            ServiceSeeder::class
         ]);
     }
 }

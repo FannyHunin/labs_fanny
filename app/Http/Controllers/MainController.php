@@ -7,6 +7,7 @@ use App\Models\Icon;
 use App\Models\Navlink;
 use App\Models\Moto;
 use App\Models\Main;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic;
 
@@ -23,8 +24,10 @@ class MainController extends Controller
         $linkData = Navlink::all()[0];
         $carouselData = Carousel::all();
         $motoData = Moto::all()[0];
+        $quickServiceData = Service::all()->random(3);
+        $serviceData = Service::all();
 
-        return view('pages.home', compact('iconData', 'linkData', 'carouselData', 'motoData'));
+        return view('pages.home', compact('iconData', 'linkData', 'carouselData', 'motoData', 'quickServiceData', 'serviceData'));
     }
     public function services()
     {
