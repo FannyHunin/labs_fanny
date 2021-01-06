@@ -8,7 +8,7 @@
 		<div class="hero-content">
 			<div class="hero-center">
 				<img src="{{asset('images/bigIcon.png')}}" alt="">
-				<p></p>
+				<p>{{$motoData->moto}}</p>
 			</div>
 		</div>
 		<!-- slider -->

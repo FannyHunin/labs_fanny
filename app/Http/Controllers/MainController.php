@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carousel;
 use App\Models\Icon;
 use App\Models\Navlink;
+use App\Models\Moto;
 use App\Models\Main;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic;
@@ -21,8 +22,9 @@ class MainController extends Controller
         $iconData = Icon::all();
         $linkData = Navlink::all()[0];
         $carouselData = Carousel::all();
+        $motoData = Moto::all()[0];
 
-        return view('pages.home', compact('iconData', 'linkData', 'carouselData'));
+        return view('pages.home', compact('iconData', 'linkData', 'carouselData', 'motoData'));
     }
     public function services()
     {

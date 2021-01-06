@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\IconController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\MotoController;
 use App\Http\Controllers\NavlinkController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,7 @@ Route::post('/update_link', [NavlinkController::class, 'update']);
 Route::get('/carousel', [CarouselController::class, 'index']);
 Route::post('/add_carousel', [CarouselController::class, 'store']);
 Route::get('/delete_carousel/{id}', [CarouselController::class, 'destroy']);
+
+/*moto controller*/
+Route::get('/edit_moto', [MotoController::class, 'index']);
+Route::post('/update_moto', [MotoController::class, 'update']);
