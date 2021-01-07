@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Service;
+use App\Models\Testimonial;
+use Facade\Ignition\Exceptions\ViewException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class ServiceController extends Controller
+class TestimonialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $serviceData = Service::all()->reverse();
-        return view('admin.services', compact("serviceData"));
+        $testimonialsData = Testimonial::all()->take(6);
+        return view('admin.testimonials', compact('testimonialsData'));
     }
 
     /**
@@ -37,27 +39,29 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $validateForm = $request->validate([
-            'icon'=>'required|min:1|max:30',
-            'title' =>'required|min:1|max:30',
-            'text' =>'required|min:1|max:250',
+            'name' =>'required|min:1|max:250',
+            'text' =>'required|min:1|max:40',
+            'function' =>'required|min:1|max:60',
+            'src' =>'required|min:1|max:100',
         ]);
-        $newEntry = new Service;
-        $newEntry->icon = $request->icon;
-        $newEntry->title = $request->title;
+        $newEntry = new Testimonial;
+        $newEntry->name = $request->name;
         $newEntry->text = $request->text;
-
+        $newEntry->function = $request->function;
+        $newEntry->src = $request->file('src')->hashName();
+        $request->file('src')->storePublicly('img', "public");
         $newEntry->save();
-
         return redirect()->back();
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Testimonial $testimonial)
     {
         //
     }
@@ -65,42 +69,44 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $newEntry = Service::find($id);
-        return view('admin.edit_services', compact('newEntry'));
+        $testimonialsData = Testimonial::find($id);
+        return view('admin.edit_testimonials', compact('testimonialsData'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $newEntry = Service::find($id);
-        $newEntry->icon = $request->icon;
-        $newEntry->title = $request->title;
+        $newEntry = Testimonial::find($id);
+        $newEntry->name = $request->name;
         $newEntry->text = $request->text;
-
+        $newEntry->function = $request->function;
+        Storage::disk('public')->delete('img/'.$newEntry->src);
+        $newEntry->src = $request->file('src')->hashName();
+        $request->file('src')->storePublicly('img', 'public');
         $newEntry->save();
         return redirect()->back();
-    }
+        }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $newEntry = Service::find($id);
+        $newEntry = Testimonial::find($id);
         $newEntry->delete();
         return redirect()->back();
     }

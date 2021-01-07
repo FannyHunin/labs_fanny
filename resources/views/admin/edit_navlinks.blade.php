@@ -2,6 +2,15 @@
 @section('content')
     <section>
         <h2>Edit your links</h2>
+        @if ($errors->any())
+            <div class="alert alert-danger" style="width: 17%">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div>
             <form action="/add_link" method="post"class="mt-5 w-25">
                 @csrf

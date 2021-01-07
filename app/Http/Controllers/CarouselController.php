@@ -39,6 +39,9 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
+        $validateForm = $request->validate([
+            'src' =>'required'
+        ]);
         $newEntry = new Carousel;
         $newEntry->src = $request->file('src')->hashName();
         $request->file('src')->storePublicly("images", "public");

@@ -254,6 +254,30 @@ return [
                     'text' => 'Moto',
                     'url'  => '/edit_moto',
                 ],
+                [
+                    'text' => 'Presentation',
+                    'url'  => '/edit_presentation',
+                ],
+                [
+                    'text' => 'Video',
+                    'url'  => '/video',
+                ],
+                [
+                    'text' => 'Testimonials',
+                    'url'  => '/testimonials',
+                ],
+                [
+                    'text' => 'Teams',
+                    'url'  => '/teams',
+                ],
+                [
+                    'text' => 'Services',
+                    'url'  => '/services',
+                ],
+                [
+                    'text' => 'Contact Form',
+                    'url'  => '/contactForm',
+                ],
             ],
         ],
         [

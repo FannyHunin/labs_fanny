@@ -7,7 +7,7 @@
     <nav>
         <ul class="menu-list">
             <li class="active"><a href="/">{{$linkData->link1}}</a></li>
-            <li><a href="/services">{{$linkData->link2}}</a></li>
+            <li><a href="/service">{{$linkData->link2}}</a></li>
             <li><a href="/blog">{{$linkData->link3}}</a></li>
             <li><a href="/contact">{{$linkData->link4}}</a></li>
         </ul>

@@ -16,7 +16,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NavlinkSeeder::class,
             MotoSeeder::class,
-            ServiceSeeder::class
+            ServiceSeeder::class,
+            PresentationSeeder::class,
+            VideoSeeder::class, 
+            TestimonialSeeder::class,
+            ContactFormSeeder::class,
+            TeamSeeder::class
         ]);
     }
 }

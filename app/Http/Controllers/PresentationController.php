@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Moto;
+use App\Models\Presentation;
 use Illuminate\Http\Request;
 
-class MotoController extends Controller
+class PresentationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class MotoController extends Controller
      */
     public function index()
     {
-        $motoData = Moto::all()[0];
-        return view('admin.moto', compact('motoData'));
+        $presentationData = Presentation::all()[0];
+        return view('admin.edit_presentation', compact("presentationData"));
     }
 
     /**
@@ -42,10 +42,10 @@ class MotoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Presentation  $presentation
      * @return \Illuminate\Http\Response
      */
-    public function show(Moto $moto)
+    public function show(Presentation $presentation)
     {
         //
     }
@@ -53,10 +53,10 @@ class MotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Presentation  $presentation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Moto $moto)
+    public function edit(Presentation $presentation)
     {
         //
     }
@@ -65,16 +65,23 @@ class MotoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Presentation  $presentation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $validateForm = $request->validate([
-            'moto' =>'required|min:1|max:250',
+            'title' =>'required|min:1|max:60',
+            'text1' =>'required|min:1',
+            'text2' =>'required|min:1',
+            'btn' =>'required|min:1|max:20',
         ]);
-        $newEntry = Moto::all()[0];
-        $newEntry->moto = $request->moto;
+        $newEntry = Presentation::all()[0];
+        $newEntry->title = $request->title;
+        $newEntry->text1 = $request->text1;
+        $newEntry->text2 = $request->text2;
+        $newEntry->btn = $request->btn;
+
         $newEntry->save();
         return redirect()->back();
     }
@@ -82,10 +89,10 @@ class MotoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Presentation  $presentation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Moto $moto)
+    public function destroy(Presentation $presentation)
     {
         //
     }

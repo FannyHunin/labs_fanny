@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Moto;
+use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class MotoController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class MotoController extends Controller
      */
     public function index()
     {
-        $motoData = Moto::all()[0];
-        return view('admin.moto', compact('motoData'));
+        $videoData = Video::all()[0];
+        return view('admin.video', compact('videoData'));
     }
 
     /**
@@ -42,10 +43,10 @@ class MotoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(Moto $moto)
+    public function show(Video $video)
     {
         //
     }
@@ -53,10 +54,10 @@ class MotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Moto $moto)
+    public function edit(Video $video)
     {
         //
     }
@@ -65,16 +66,20 @@ class MotoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $validateForm = $request->validate([
-            'moto' =>'required|min:1|max:250',
+            'src' =>'required|min:1|max:250',
+            'img' =>'required|min:1|max:250',
         ]);
-        $newEntry = Moto::all()[0];
-        $newEntry->moto = $request->moto;
+        $newEntry = Video::all()[0];
+        $newEntry->delete(); 
+        $newEntry->src = $request->src;
+        Storage::disk('public')->delete('images/'.$newEntry->img);
+	    $request->file("img")->storePublicly("images", "public");
         $newEntry->save();
         return redirect()->back();
     }
@@ -82,10 +87,10 @@ class MotoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Moto $moto)
+    public function destroy(Video $video)
     {
         //
     }

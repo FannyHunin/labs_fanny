@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Moto;
+use App\Models\ContactForm;
 use Illuminate\Http\Request;
 
-class MotoController extends Controller
+class ContactFormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class MotoController extends Controller
      */
     public function index()
     {
-        $motoData = Moto::all()[0];
-        return view('admin.moto', compact('motoData'));
+        $contactFormData = ContactForm::all()[0];
+        return view("admin.contactForm", compact("contactFormData"));
     }
 
     /**
@@ -42,10 +42,10 @@ class MotoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\ContactForm  $contactForm
      * @return \Illuminate\Http\Response
      */
-    public function show(Moto $moto)
+    public function show(ContactForm $contactForm)
     {
         //
     }
@@ -53,10 +53,10 @@ class MotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\ContactForm  $contactForm
      * @return \Illuminate\Http\Response
      */
-    public function edit(Moto $moto)
+    public function edit(ContactForm $contactForm)
     {
         //
     }
@@ -65,16 +65,24 @@ class MotoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\ContactForm  $contactForm
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $validateForm = $request->validate([
-            'moto' =>'required|min:1|max:250',
+            'title' =>'required|min:1|max:30',
+            'text' =>'required|min:1|max:200',
+            'adress' =>'required|min:1|max:60',
+            'phone' =>'required|min:1|max:20',
+            'mail' =>'required|min:1|max:50',
         ]);
-        $newEntry = Moto::all()[0];
-        $newEntry->moto = $request->moto;
+        $newEntry = ContactForm::all()[0];
+        $newEntry->title = $request->title;
+        $newEntry->text = $request->text;
+        $newEntry->adress = $request->adress;
+        $newEntry->phone = $request->phone;
+        $newEntry->mail = $request->mail;
         $newEntry->save();
         return redirect()->back();
     }
@@ -82,10 +90,10 @@ class MotoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Moto  $moto
+     * @param  \App\Models\ContactForm  $contactForm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Moto $moto)
+    public function destroy(ContactForm $contactForm)
     {
         //
     }

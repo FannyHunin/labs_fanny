@@ -24,6 +24,9 @@ class IconController extends Controller
     }
     public function store(Request $request)
     {
+        $validateForm = $request->validate([
+            'src' =>'required',
+        ]);
         $newEntry = new Icon;
         $newEntry->src = $request->file("src")->hashName();
         $request->file("src")->storePublicly("images", "public");

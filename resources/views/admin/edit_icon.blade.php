@@ -2,6 +2,15 @@
 @section('content')
     <section>
         <h2>Edit your icon</h2>
+        @if ($errors->any())
+            <div class="alert alert-danger" style="width: 17%"> 
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div>
             <form action="/add_icon" method="post" enctype="multipart/form-data" class="mt-5">
                 @csrf

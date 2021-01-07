@@ -31,6 +31,11 @@
         @include('adminlte::plugins', ['type' => 'css'])
 
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
+        <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}"/>
+        <link rel="stylesheet" href="{{asset("css/font-awesome.min.css")}}"/>
+        <link rel="stylesheet" href="{{asset("css/flaticon.css")}}"/>
+        <link rel="stylesheet" href="{{asset("css/magnific-popup.css")}}"/>
+        <link rel="stylesheet" href="{{asset("css/owl.carousel.css")}}"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     @else
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
