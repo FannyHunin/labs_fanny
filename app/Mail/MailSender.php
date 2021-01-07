@@ -29,6 +29,6 @@ class MailSender extends Mailable
      */
     public function build()
     {
-        return $this->from($this->mail->email)->view('mail.contactMail')->with(['mailContent'=>$this->mail]);
+        return $this->from($this->mail->email)->view('mail.contactMail')->with(['message'=>$this->mail]);
     }
 }

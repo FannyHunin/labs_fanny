@@ -210,10 +210,10 @@
 						@csrf
 						<div class="row">
 							<div class="col-sm-6">
-								<input type="text" name="name" placeholder="Your name" name="first_name">
+								<input type="text" name="name" placeholder="Your name" name="name">
 							</div>
 							<div class="col-sm-6">
-								<input type="text" name="email" placeholder="Your email"  name="mail">
+								<input type="text" name="email" placeholder="Your email"  name="email">
 							</div>
 							<div class="col-sm-12">
 								<input type="text" name="subject" placeholder="Subject"  name="subject">
