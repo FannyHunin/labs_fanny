@@ -18,8 +18,8 @@
 
 
 	<!-- Google map -->
-	<div class="map" id="map-area"></div>
-
+	<div class="map" id="map-area">
+	</div>
 
 	<!-- Contact section -->
 	<div class="contact-section spad fix">

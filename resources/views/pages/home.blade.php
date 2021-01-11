@@ -139,6 +139,12 @@
 						<div class="row">
 					@endif
 				@endforeach
+				<div class="row d-flex justify-content-center mb-5 mx-0">
+                    <div>
+						{{$serviceData->fragment('serviceData')->links('vendor.pagination.bootstrap-4')}}
+                        {{-- {{$serviceData->links()}} --}}
+                    </div>
+                </div>
 				<div class="text-center">
 					<a href="" class="site-btn">Browse</a>
 				</div>

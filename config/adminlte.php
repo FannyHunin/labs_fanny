@@ -285,12 +285,12 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Labs icon',
+                    'text' => 'Title',
                     'url'  => '#',
                 ],
                 [
-                    'text' => 'Navbar links',
-                    'url'  => '#',
+                    'text' => 'Prime Services',
+                    'url'  => '/primeServices',
                 ],
             ],
         ],

@@ -17,123 +17,40 @@
 
 
 	<!-- services section -->
-	<div class="services-section spad">
-		<div class="container">
-			<div class="section-title dark">
-				<h2>Get in <span>the Lab</span> and see the services</h2>
-			</div>
 			<div class="row">
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-023-flask"></i>
+				<div class="services-section spad">
+					<div class="container">
+						<div class="section-title dark">
+							<h2>Get in <span>the Lab</span> and see the services</h2>
 						</div>
-						<div class="service-text">
-							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
+						<div class="row">
+							@foreach ($serviceData as $service)
+								<div class="col-md-4 col-sm-6">
+									<div class="service">
+										<div class="icon">
+											<i class="{{$service->icon}}"></i>
+										</div>
+										<div class="service-text">
+											<h2>{{$service->title}}</h2>
+											<p>{{$service->text}}</p>
+										</div>
+									</div>
+								</div>
+								@if ($loop->iteration % 3 == 0)
+									</div>
+									<div class="row">
+								@endif
+							@endforeach
+							<div class="row d-flex justify-content-center mb-5 mx-0">
+								<div>
+									{{$serviceData->links()}}
+								</div>
+							</div>
+							<div class="text-center">
+								<a href="" class="site-btn">Browse</a>
+							</div>
 					</div>
 				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-011-compass"></i>
-						</div>
-						<div class="service-text">
-							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-037-idea"></i>
-						</div>
-						<div class="service-text">
-							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-039-vector"></i>
-						</div>
-						<div class="service-text">
-							<h2>Social Media</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-036-brainstorming"></i>
-						</div>
-						<div class="service-text">
-							<h2>Brainstorming</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-026-search"></i>
-						</div>
-						<div class="service-text">
-							<h2>Documented</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-018-laptop-1"></i>
-						</div>
-						<div class="service-text">
-							<h2>Responsive</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-043-sketch"></i>
-						</div>
-						<div class="service-text">
-							<h2>Retina ready</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-012-cube"></i>
-						</div>
-						<div class="service-text">
-							<h2>Ultra modern</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="text-center">
-				<a href="" class="site-btn">Browse</a>
 			</div>
 		</div>
 	</div>
@@ -150,35 +67,17 @@
 			<div class="row">
 				<!-- feature item -->
 				<div class="col-md-4 col-sm-4 features">
-					<div class="icon-box light left">
-						<div class="service-text">
-							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+					@foreach ($primeServicesData as $pservices)
+						<div class="icon-box light left">
+							<div class="service-text">
+								<h2>{{$pservices->title}}</h2>
+								<p>{{$pservices->text}}</p>
+							</div>
+							<div class="icon">
+								<i class="{{$pservices->icon}}"></i>
+							</div>
 						</div>
-						<div class="icon">
-							<i class="flaticon-002-caliper"></i>
-						</div>
-					</div>
-					<!-- feature item -->
-					<div class="icon-box light left">
-						<div class="service-text">
-							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-						</div>
-						<div class="icon">
-							<i class="flaticon-019-coffee-cup"></i>
-						</div>
-					</div>
-					<!-- feature item -->
-					<div class="icon-box light left">
-						<div class="service-text">
-							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-						</div>
-						<div class="icon">
-							<i class="flaticon-020-creativity"></i>
-						</div>
-					</div>
+					@endforeach
 				</div>
 				<!-- Devices -->
 				<div class="col-md-4 col-sm-4 devices">
@@ -188,39 +87,21 @@
 				</div>
 				<!-- feature item -->
 				<div class="col-md-4 col-sm-4 features">
-					<div class="icon-box light">
+					@foreach ($primeServicesData2 as $pservices2)
+					<div class="icon-box light left">
 						<div class="icon">
-							<i class="flaticon-037-idea"></i>
+							<i class="{{$pservices2->icon}}"></i>
 						</div>
-						<div class="service-text">
-							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+						<div class="service-text text-left">
+							<h2>{{$pservices2->title}}</h2>
+							<p>{{$pservices2->text}}</p>
 						</div>
 					</div>
-					<!-- feature item -->
-					<div class="icon-box light">
-						<div class="icon">
-							<i class="flaticon-025-imagination"></i>
-						</div>
-						<div class="service-text">
-							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-						</div>
-					</div>
-					<!-- feature item -->
-					<div class="icon-box light">
-						<div class="icon">
-							<i class="flaticon-008-team"></i>
-						</div>
-						<div class="service-text">
-							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 			<div class="text-center mt100">
-				<a href="" class="site-btn">Browse</a>
+				<a href="#quick_blogs" class="site-btn">Browse</a>
 			</div>
 		</div>
 	</div>
@@ -228,7 +109,7 @@
 
 
 	<!-- services card section-->
-	<div class="services-card-section spad">
+	<div class="services-card-section spad" id="quick_blogs">
 		<div class="container">
 			<div class="row">
 				<!-- Single Card -->

@@ -9,6 +9,7 @@ use App\Models\Navlink;
 use App\Models\Moto;
 use App\Models\Main;
 use App\Models\Presentation;
+use App\Models\PrimeService;
 use App\Models\Service;
 use App\Models\Team;
 use App\Models\Testimonial;
@@ -35,7 +36,8 @@ class MainController extends Controller
 
         $quickServiceData = Service::all()->random(3);
 
-        $serviceData = Service::all()->reverse();
+        // $serviceData = Service::simplePaginate(9);
+        $serviceData = Service::orderBy('id', 'desc')->paginate(9);
 
         $presentationData = Presentation::all()[0];
 
@@ -67,15 +69,25 @@ class MainController extends Controller
             'videoData',
             'testimonialsData',
             'contactFormData',
-            'teamsData'
+            'teamsData',
         ));
     }
     public function services()
     {
         $iconData = Icon::all();
         $linkData = Navlink::all()[0];
+        $serviceData = Service::simplePaginate(9);
+        $primeServicesData = PrimeService::all()->take(3);
+        $primeServicesData2 = PrimeService::all()->take(3)->reverse();
 
-        return view('pages.services', compact('iconData', 'linkData'));
+
+        return view('pages.services', 
+        compact('iconData', 
+        'linkData', 
+        'serviceData',
+        'primeServicesData',
+        'primeServicesData2'
+    ));
     }
     public function blog()
     {

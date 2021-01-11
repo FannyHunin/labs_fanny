@@ -8,6 +8,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\MotoController;
 use App\Http\Controllers\NavlinkController;
 use App\Http\Controllers\PresentationController;
+use App\Http\Controllers\PrimeServiceController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
@@ -90,7 +91,12 @@ Route::post('/update_teams/{id}', [TeamController::class, 'update']);
 Route::get('/contactForm', [ContactFormController::class, 'index']);
 Route::post('/update_contactForm', [ContactFormController::class, 'update']);
 
+/*prime services controller*/
+Route::get('/primeServices', [PrimeServiceController::class, 'index']);
+Route::post('/add_primeServices', [PrimeServiceController::class, 'store']);
+Route::get('/delete_primeServices/{id}', [PrimeServiceController::class, 'destroy']);
+Route::get('/edit_primeServices/{id}', [PrimeServiceController::class, 'edit']);
+Route::post('/update_primeServices/{id}', [PrimeServiceController::class, 'update']);
 
-
-/*mail*/
+/*mail contact*/
 Route::post('/mail_sending', [MailController::class, 'store']);

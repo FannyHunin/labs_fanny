@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             VideoSeeder::class, 
             TestimonialSeeder::class,
             ContactFormSeeder::class,
-            TeamSeeder::class
+            TeamSeeder::class,
+            PrimeServiceSeeder::class
         ]);
     }
 }
