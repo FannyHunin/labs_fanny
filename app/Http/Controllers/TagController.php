@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $tagsData = Tag::all();
-        return view('admin.article', compact('tagsData'));
+        $tagData = Tag::all();
+        return view('admin.tags', compact('tagData'));
     }
 
     /**
@@ -37,16 +36,19 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newEntry = new Tag;
+        $newEntry->tags = $request->tags;
+        $newEntry->save();
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(Tag $tag)
     {
         //
     }
@@ -54,10 +56,10 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -66,10 +68,10 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -77,11 +79,13 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        //
+        $newEntry = Tag::find($id);
+        $newEntry->delete();
+        return redirect()->back();
     }
 }

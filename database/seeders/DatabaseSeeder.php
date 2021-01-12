@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             PrimeServiceSeeder::class,
             CenterTeamSeeder::class,
             ServiceTitleSeeder::class,
+            TagSeeder::class
         ]);
     }
 }

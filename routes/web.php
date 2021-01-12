@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\CenterTeamController;
 use App\Http\Controllers\ContactFormController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\PrimeServiceController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceTitleController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TeamTitleController;
 use App\Http\Controllers\TestimonialController;
@@ -116,3 +118,11 @@ Route::post('/update_primeServices/{id}', [PrimeServiceController::class, 'updat
 
 /*mail contact*/
 Route::post('/mail_sending', [MailController::class, 'store']);
+
+/*tags controller*/
+Route::get('/tags', [TagController::class, 'index']);
+Route::post('/add_tags', [TagController::class, 'store']);
+Route::get('/delete_tags/{id}', [TagController::class, 'destroy']);
+
+/*articles controller*/
+Route::get('/article', [ArticleController::class, 'index']);

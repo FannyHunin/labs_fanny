@@ -303,12 +303,12 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Labs icon',
-                    'url'  => '#',
+                    'text' => 'Edit your tags',
+                    'url'  => '/tags',
                 ],
                 [
-                    'text' => 'Navbar links',
-                    'url'  => '#',
+                    'text' => 'Add an article',
+                    'url'  => '/article',
                 ],
             ],
         ],
