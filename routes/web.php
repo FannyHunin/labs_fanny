@@ -126,3 +126,4 @@ Route::get('/delete_tags/{id}', [TagController::class, 'destroy']);
 
 /*articles controller*/
 Route::get('/article', [ArticleController::class, 'index']);
+Route::post('/add_article', [ArticleController::class, 'store']);

@@ -23,7 +23,6 @@ class CreateArticlesTable extends Migration
             $table->char('function', 100);
             $table->char('descr', 250);
             // $table->char('cat', 100);
-            $table->char('tags', 50);
             // $table->text('comments');
             $table->timestamps();
         });

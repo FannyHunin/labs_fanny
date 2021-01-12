@@ -37,8 +37,23 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $newEntry = new Article;
+        $newEntry->src = $request->file('src')->hashName();
+        $request->file('src')->storePublicly("images", "public");
+
+        $newEntry->date = $request->date;
+        $newEntry->title = $request->title;
+        $newEntry->text = $request->text;
+        $newEntry->author = $request->author;
+        $newEntry->function = $request->function;
+        $newEntry->descr = $request->descr;
+
+        $newEntry->save();
+
+        $newEntry->tags()->sync($request->tags);
+        
+        return redirect()->back();
+;    }
 
     /**
      * Display the specified resource.

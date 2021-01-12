@@ -2,7 +2,7 @@
 @section('content')
     <section>
         <h2>Add an article</h2>
-        <form action="/add_article" method="post" class="d-flex flex-column w-25">
+        <form action="/add_article" enctype="multipart/form-data" method="post" class="d-flex flex-column w-25">
         @csrf
             <label for="src">Image
                 <input type="file" name="src">
@@ -26,9 +26,10 @@
                 <input type="text" name="descr">
             </label>
             <label for="tags">Tags
-                <select multiple name="" id="">
+                <select multiple name="tags[]" id="" >
                     @foreach ($tagsData as $tags)
-                        <option value="">{{$tags->tags}}</option>
+                    
+                        <option value="{{ $tags->id }}" {{ in_array($tags->id, old('tags') ?: []) ? 'selected' : '' }}>{{$tags->tags}}</option>
                     @endforeach
                 </select>
             </label>
