@@ -142,7 +142,6 @@
 				<div class="row d-flex justify-content-center mb-5 mx-0">
                     <div>
 						{{$serviceData->fragment('serviceData')->links('vendor.pagination.bootstrap-4')}}
-                        {{-- {{$serviceData->links()}} --}}
                     </div>
                 </div>
 				<div class="text-center">
@@ -158,15 +157,31 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="section-title">
-				<h2>Get in <span>the Lab</span> and  meet the team</h2>
+				<h2>{{$startTT}}<span class="bg-success">{{$cutTT}}</span>{{$endTT}}</h2>
 			</div>
 			<div class="row">
-				@foreach ($teamsData as $teams)
+				@foreach ($randomTeamData1 as $item)
 					<div class="col-sm-4">
 						<div class="member">
-							<img src="{{asset("img/team/".$teams->src)}}" alt="" width="360" height="448">
-							<h2>{{$teams->name}}</h2>
-							<h3>{{$teams->function}}</h3>
+							<img src="{{asset("img/team/".$item->src)}}" alt="">
+							<h2>{{$item->name}}</h2>
+							<h3>{{$item->function}}</h3>
+						</div>
+					</div>
+				@endforeach
+				<div class="col-sm-4">
+					<div class="member">
+						<img src="{{asset("img/team/".$centerTeamData[0]->center->src)}}" alt="">
+						<h2>{{$centerTeamData[0]->center->name}}</h2>
+						<h3>{{$centerTeamData[0]->center->function}}</h3>
+					</div>
+				</div>
+				@foreach ($randomTeamData2 as $item)
+					<div class="col-sm-4">
+						<div class="member">
+							<img src="{{asset("img/team/".$item->src)}}" alt="">
+							<h2>{{$item->name}}</h2>
+							<h3>{{$item->function}}</h3>
 						</div>
 					</div>
 				@endforeach

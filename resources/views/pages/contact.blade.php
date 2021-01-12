@@ -18,9 +18,8 @@
 
 
 	<!-- Google map -->
-	<div class="map" id="map-area">
-	</div>
-
+	<iframe src="https://maps.google.com/maps?q=molengeek&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="width: 100%; height:600px"></iframe>
+	
 	<!-- Contact section -->
 	<div class="contact-section spad fix">
 		<div class="container">

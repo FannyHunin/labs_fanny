@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\CenterTeamController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\IconController;
 use App\Http\Controllers\MailController;
@@ -10,9 +11,13 @@ use App\Http\Controllers\NavlinkController;
 use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\PrimeServiceController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceTitleController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TeamTitleController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VideoController;
+use App\Models\ServiceTitle;
+use App\Models\TeamTitle;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +85,10 @@ Route::get('/delete_testimonials/{id}', [TestimonialController::class, 'destroy'
 Route::get('/edit_testimonials/{id}', [TestimonialController::class, 'edit']);
 Route::post('/update_testimonials/{id}', [TestimonialController::class, 'update']);
 
+/*teams title controller*/
+Route::get('/teamsTitle', [TeamTitleController::class, 'index']);
+Route::post('update_teamsTitle', [TeamTitleController::class, 'update']);
+
 /*teams controller*/
 Route::get('/teams', [TeamController::class, 'index']);
 Route::post('/add_teams', [TeamController::class, 'store']);
@@ -87,9 +96,16 @@ Route::get('/delete_teams/{id}', [TeamController::class, 'destroy']);
 Route::get('/edit_teams/{id}', [TeamController::class, 'edit']);
 Route::post('/update_teams/{id}', [TeamController::class, 'update']);
 
+Route::post('/add_center', [TeamController::class, 'center']);
+
 /*contact form controller*/
 Route::get('/contactForm', [ContactFormController::class, 'index']);
 Route::post('/update_contactForm', [ContactFormController::class, 'update']);
+
+/*service title controller*/
+Route::get('/serviceTitle', [ServiceTitleController::class, 'index']);
+Route::post('/update_serviceTitle', [ServiceTitleController::class, 'update']);
+
 
 /*prime services controller*/
 Route::get('/primeServices', [PrimeServiceController::class, 'index']);

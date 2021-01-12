@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CenterTeam;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -87,10 +88,11 @@ class TeamController extends Controller
         $newEntry->delete();
         $newEntry->name = $request->name;
         $newEntry->function = $request->function;
+        $newEntry->src = $request->file('src')->hashName();
         Storage::disk('public')->delete('img/team'.$newEntry->src);
-        $request->file("src")->storePublicly("img/team", "public");
         $newEntry->save();
-        return view('admin.teams');
+        $request->file("src")->storePublicly("img/team", "public");
+        return redirect()->back();
     }
 
     /**
@@ -103,6 +105,16 @@ class TeamController extends Controller
     {
         $newEntry = Team::find($id);
         $newEntry->delete();
+        return redirect()->back();
+    }
+
+    public function center(Request $request){
+        $centerDelete = CenterTeam::all();
+        $centerDelete[0]->delete();
+
+        $newEntry = new CenterTeam;
+        $newEntry->center_id = $request->center_id;
+        $newEntry->save();
         return redirect()->back();
     }
 }

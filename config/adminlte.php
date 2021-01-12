@@ -267,6 +267,10 @@ return [
                     'url'  => '/testimonials',
                 ],
                 [
+                    'text' => 'Teams title',
+                    'url'  => '/teamsTitle',
+                ],
+                [
                     'text' => 'Teams',
                     'url'  => '/teams',
                 ],
@@ -285,8 +289,8 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Title',
-                    'url'  => '#',
+                    'text' => 'Service title',
+                    'url'  => '/serviceTitle',
                 ],
                 [
                     'text' => 'Prime Services',

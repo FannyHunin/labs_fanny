@@ -21,7 +21,7 @@
 				<div class="services-section spad">
 					<div class="container">
 						<div class="section-title dark">
-							<h2>Get in <span>the Lab</span> and see the services</h2>
+							<h2>{{$startST}}<span class="bg-success">{{$cutST}}</span>{{$endST}}</h2>
 						</div>
 						<div class="row">
 							@foreach ($serviceData as $service)
@@ -62,7 +62,7 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="section-title">
-				<h2>Get in <span>the Lab</span> and  discover the world</h2>
+				<h2>{{$startST}}<span class="bg-success">{{$cutST}}</span>{{$endST}}</h2>
 			</div>
 			<div class="row">
 				<!-- feature item -->
